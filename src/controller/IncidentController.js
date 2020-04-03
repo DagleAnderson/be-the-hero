@@ -11,13 +11,13 @@ module.exports ={
         
       //select with pagination
         const incidents =  await connection('incidents')
-        .join('ongs','ong_id','=','incidents.ong_id')
+        .join('ongs','ongs.id','=','incidents.ong_id')
         .limit(5)
         .offset((page - 1) * 5)
-        .select( // another way is to use ('*'), when I want to get all ancidents data
+        .select( // another way is to use ('*'), when I want to get all incidents data
                 [
-                    'incidents.*'
-                    ,'ongs.name',
+                    'incidents.*',
+                    'ongs.name',
                     'ongs.email',
                     'ongs.whatsapp',
                     'ongs.city',
